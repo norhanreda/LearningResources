@@ -1,6 +1,6 @@
 <template>
  <div class="container">
-<h1>Learning Resource App</h1>
+<the-header title="RememberMe"></the-header>
 <stored-resources
 :resources="storedresources"
 >
@@ -10,11 +10,12 @@
 
 <script>
 import StoredResources from './components/learn/StoredResources.vue';
-
+import TheHeader from './components/layouts/TheHeader.vue';
 export default {
   name: 'App',
   components: {
    'stored-resources': StoredResources,
+   'the-header':TheHeader,
   },
 
    data() {
