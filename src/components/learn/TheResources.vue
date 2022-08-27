@@ -53,11 +53,11 @@ export default {
     },
     computed:{
     StoredButton (){
-   return this.setSelectedTab==='stored-resources' ? null:'flat';
+   return this.selectedTab==='stored-resources' ? null:'flat';
     },
     AddButton()
     {
-     return this.setSelectedTab==='add-resource' ? null:'flat';
+     return this.selectedTab==='add-resource' ? null:'flat';
     },
 
     },
