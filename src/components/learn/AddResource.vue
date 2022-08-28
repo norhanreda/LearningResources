@@ -1,7 +1,19 @@
 <template>
+<base-dialog v-if="InputIsInValid"
+title="Invalid Input">
+<template #Default> 
+<p>At least one input field is invalid</p>
+<p>Please, check all inputs  </p>
+</template>
+
+<template #actions>
+  <base-button @click="confirmError">Okey</base-button>
+</template>
+
+</base-dialog>
 
 <base-card>
-<form  @submit="submitData">
+<form  @submit.prevent="submitData">
 <div class="form_control">
 <label for="title"> Title:</label>
 <input  id="title" name="title" type="text"  v-model="Title" />
@@ -38,6 +50,7 @@ export default {
    Title:'',
    Description:'',
    Link:'',
+   InputIsInValid:false,
   };
 
   },
@@ -46,9 +59,17 @@ export default {
  submitData()
  {
    
-    
+    if(this.Title.trim()==='' || this.Description.trim()==='' || this.Link.trim()==='')
+    {
+      this.InputIsInValid=true;
+       return ;
+    }
     this.addresource( this.Title,this.Description,this.Link);
-    // this.$emit("addResource", this.Title, this.Description, this.Link);
+    
+ },
+ confirmError()
+ {
+  this.InputIsInValid=false;
  },
 
 
