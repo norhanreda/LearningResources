@@ -1,21 +1,23 @@
 <template>
 
 <base-card>
-<form>
+<form  @submit="submitData">
 <div class="form_control">
 <label for="title"> Title:</label>
-<input  id="title" name="title" type="text"/>
+<input  id="title" name="title" type="text"  v-model="Title" />
 </div>
 
 <div class="form_control">
 <label for="description">Describtion: </label>
-<textarea id="description" name="description" rows="3"> </textarea>
+<textarea id="description" name="description" rows="3"  v-model="Description" > </textarea>
 </div>
 
 <div class="form_control">
 <label for="link"> Link:</label>
-<input id="link" name="link" type="url"/>
-<base-button :type="submit">Add Resource</base-button>
+<input id="link" name="link" type="url"   v-model="Link"/>
+</div>
+<div>
+<base-button   type="submit">Add Resource</base-button>
 </div>
 
 </form>
@@ -27,12 +29,28 @@
 import BaseButton from '../UI/BaseButton.vue';
 
 export default {
+  inject:['addresource'],
+ 
+  data ()
+  {
+  return {
+   
+   Title:'',
+   Description:'',
+   Link:'',
+  };
+
+  },
   components: { BaseButton },
  methods:{
  submitData()
  {
-
+   
+    
+    this.addresource( this.Title,this.Description,this.Link);
+    // this.$emit("addResource", this.Title, this.Description, this.Link);
  },
+
 
  },
  
@@ -55,6 +73,7 @@ textarea {
   padding: 0.15rem;
   border: 1px solid #ccc;
   margin: 1rem auto;
+   resize: none;
 }
 
 input:focus,

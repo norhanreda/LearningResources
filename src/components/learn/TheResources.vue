@@ -1,70 +1,82 @@
 <template>
-    <base-card>
-        <base-button @click="setSelectedTab('stored-resources')" :mode="StoredButton">Stored Resources
-        </base-button>
-        <base-button @click="setSelectedTab('add-resource')" :mode="AddButton">Add Resource
-        </base-button>
-    </base-card>
+  <base-card>
+    <base-button
+      @click="setSelectedTab('stored-resources')"
+      :mode="StoredButton"
+      >Stored Resources
+    </base-button>
+    <base-button @click="setSelectedTab('add-resource')" :mode="AddButton"
+      >Add Resource
+    </base-button>
+  </base-card>
 
+  <keep-alive>
     <component :is="selectedTab"> </component>
+  </keep-alive>
 </template>
 
 <script>
-import BaseButton from '../UI/BaseButton.vue';
-import StoredResources from './StoredResources.vue';
-import AddResource from './AddResource.vue';
+import BaseButton from "../UI/BaseButton.vue";
+import StoredResources from "./StoredResources.vue";
+import AddResource from "./AddResource.vue";
 export default {
-    components: {
-        BaseButton,
-        'stored-resources': StoredResources,
-        'add-resource': AddResource,
-    },
+  components: {
+    BaseButton,
+    "stored-resources": StoredResources,
+    "add-resource": AddResource,
+  },
 
-    data() {
-        return {
-            storedresources: [
-                {
-                    id: "official-guide",
-                    title: "Official Guide",
-                    description: "the official vue js documentation",
-                    link: "https://cli.vuejs.org/guide/creating-a-project.html#vue-create",
-                },
-                {
-                    id: "google",
-                    title: "Google",
-                    description: "the google website",
-                    link: "https://www.google.com/",
-                },
-            ],
-            selectedTab: 'stored-resources',
-
-        };
-    },
-    provide() {
-      return {
-            resources: this.storedresources,
-        };
-    },
-    methods:
-    {
-        setSelectedTab(tab) {
-            this.selectedTab = tab;
+  data() {
+    return {
+      storedresources: [
+        {
+          id: "official-guide",
+          title: "Official Guide",
+          description: "the official vue js documentation",
+          link: "https://cli.vuejs.org/guide/creating-a-project.html#vue-create",
         },
-    },
-    computed:{
-    StoredButton (){
-   return this.selectedTab==='stored-resources' ? null:'flat';
-    },
-    AddButton()
-    {
-     return this.selectedTab==='add-resource' ? null:'flat';
+        {
+          id: "google",
+          title: "Google",
+          description: "the google website",
+          link: "https://www.google.com/",
+        },
+      ],
+      selectedTab: "stored-resources",
+    };
+  },
+  provide() {
+    return {
+      resources: this.storedresources,
+      addresource: this.AddResource,
+    };
+  },
+  methods: {
+    setSelectedTab(tab) {
+      this.selectedTab = tab;
     },
 
+    AddResource(Title, Description, Link) {
+      const newResorce = {
+        id: new Date().toISOString(),
+        title: Title,
+        description: Description,
+        link: Link,
+      };
+
+      this.storedresources.unshift(newResorce);
+      this.selectedTab = "stored-resources";
     },
-
-
+  },
+  computed: {
+    StoredButton() {
+      return this.selectedTab === "stored-resources" ? null : "flat";
+    },
+    AddButton() {
+      return this.selectedTab === "add-resource" ? null : "flat";
+    },
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

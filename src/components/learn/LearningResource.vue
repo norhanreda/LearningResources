@@ -13,7 +13,7 @@
 
     <p> {{description}}</p>
     <nav>
-      <a v-bind:href="link"> View Reasource</a>
+      <a  target="_blank" v-bind:href="link"> View Reasource</a>
     </nav>
   </li>
   </base-card>
