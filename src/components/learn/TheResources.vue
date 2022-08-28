@@ -24,6 +24,7 @@ export default {
     BaseButton,
     "stored-resources": StoredResources,
     "add-resource": AddResource,
+    
   },
 
   data() {
@@ -49,6 +50,7 @@ export default {
     return {
       resources: this.storedresources,
       addresource: this.AddResource,
+      removeresource:this.RemoveResource,
     };
   },
   methods: {
@@ -66,6 +68,11 @@ export default {
 
       this.storedresources.unshift(newResorce);
       this.selectedTab = "stored-resources";
+    },
+    RemoveResource(resID)
+    {
+       const index=this.storedresources.findIndex(res => res.id === resID);
+       this.storedresources.splice(index,1);
     },
   },
   computed: {

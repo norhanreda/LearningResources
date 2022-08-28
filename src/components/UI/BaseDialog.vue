@@ -8,7 +8,11 @@
     </slot>
     </header>
     <section>
-        <slot > </slot>
+        <slot  > 
+            <p>At least one input field is invalid</p>
+  <p>Please, check all inputs  </p>
+ 
+        </slot>
     </section>
 
     <menu >

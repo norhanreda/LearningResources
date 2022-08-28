@@ -1,14 +1,13 @@
 <template>
 <base-dialog v-if="InputIsInValid"
 title="Invalid Input">
-<template #Default> 
-<p>At least one input field is invalid</p>
-<p>Please, check all inputs  </p>
-</template>
+
+
 
 <template #actions>
   <base-button @click="confirmError">Okey</base-button>
 </template>
+
 
 </base-dialog>
 

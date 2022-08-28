@@ -6,7 +6,7 @@
         <h3> {{title}}</h3>
         <base-button
         
-        mode="flat"
+        mode="flat" @click="removeresource(id)"
         >Delete</base-button>
       </header>
     
@@ -23,8 +23,8 @@
 
 
 export default {
-
-  props: ['title','description','link'],
+inject:['removeresource'],
+  props: ['id','title','description','link'],
  
 };
 </script>
