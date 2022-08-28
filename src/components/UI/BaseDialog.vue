@@ -1,4 +1,5 @@
 <template>
+    <teleport to="body">
     <div>
 <dialog open>
     <header>
@@ -21,6 +22,7 @@
     </menu>
 </dialog>
 </div>
+    </teleport>
    </template>
    
    <script>
