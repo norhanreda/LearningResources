@@ -67,9 +67,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ![image](https://user-images.githubusercontent.com/88630231/187700318-efb55382-10ed-49da-a2ec-95418e5b70c2.png)
 
-<li> <b>Delete Resource</b> </li>
 
-![image](https://user-images.githubusercontent.com/88630231/187700586-fa2c9c15-be36-4f4a-bc31-cdb8deeecd25.png)
 
 
 
